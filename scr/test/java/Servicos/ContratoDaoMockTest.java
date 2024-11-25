@@ -12,7 +12,7 @@ public class ContratoDaoMockTest {
     void setUp() {
         contratoDao = new ContratoDaoMock();
     }
-
+    
     @Test
     void testBuscarContratoExistente() {
         assertEquals("Contrato A", contratoDao.buscar(1));
@@ -47,4 +47,18 @@ public class ContratoDaoMockTest {
         assertFalse(contratoDao.atualizar(99, "Contrato Novo"));
         assertEquals("Contrato não encontrado", contratoDao.buscar(99));
     }
+    
+    @Test
+    void testSalvarContratoNovo() {
+        assertTrue(contratoDao.salvar(4, "Contrato D"));
+        assertEquals("Contrato D", contratoDao.buscar(4));
+    }
+    
+    @Test
+    void testSalvarContratoExistente() {
+        assertFalse(contratoDao.salvar(1, "Contrato E"));
+        assertEquals("Contrato A", contratoDao.buscar(1));
+    }
 }
+
+

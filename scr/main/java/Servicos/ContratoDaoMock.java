@@ -35,4 +35,13 @@ public class ContratoDaoMock implements IContratoDao {
         }
         return false;
     }
+
+    @Override
+    public boolean salvar(int id, String contrato) { // Implementação do método salvar
+        if (contratos.containsKey(id)) {
+            return false;
+        }
+        contratos.put(id, contrato);
+        return true;
+    }
 }
